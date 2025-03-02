@@ -20,7 +20,7 @@ You can install the gavato library in 2 ways:
     - Obtain the gavato source by cloning this repository.
     - Make sure to have gcc installed on your system , If not then install it first.
     - Install mklib! Without mklib your need to manually configure everything your self which is not recommended since gavato has a ton of files. So install mklib to make gavato by the following commands:
-    ```bash
+```bash
 # Clone the repository
 git clone https://github.com/darkyboys/mklib.git
 cd mklib
@@ -35,7 +35,7 @@ g++ -std=c++17 -o bin/mklib src/main.cc
 
 # Move the binary to a directory in your PATH
 mv bin/mklib /usr/local/bin/
-    ```
+```
 If got any permission error use:
 ```bash
 sudo mv bin/mklib /usr/local/bin/
