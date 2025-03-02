@@ -62,6 +62,10 @@ git clone https://github.com/darkyboys/gavato.git
 cp bin/mklib gavato
 cd gavato
 ./mklib
+cp gavato.lib.js ..
+cd gavato.lib.js ..
+# Comment the line bellow if wants to make gavato without cleaning
+rm -rf mklib
 ```
 
 **2nd Way**
