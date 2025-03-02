@@ -63,7 +63,9 @@ cp bin/mklib gavato
 cd gavato
 ./mklib
 cp gavato.lib.js ..
-cd gavato.lib.js ..
+cd ..
+cp gavato.lib.js ..
+cd ..
 # Comment the line bellow if wants to make gavato without cleaning
 rm -rf mklib
 ```
