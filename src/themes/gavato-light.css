@@ -1,0 +1,138 @@
+/*
+ * Gavato - A Simple To Use UI Widget Library to create Applications
+ * Licensed under the MIT License
+ * uses HLWTK As the core for drawing the widgets
+ * Checkout the readme.md file for more information
+*/
+*{
+    -webkit-tap-highlight-color: transparent;
+}
+body {
+    background: whitesmoke;
+    color: dimgray;
+    font-family: Arial;
+    margin: 0px;
+    padding: 0px;
+}
+
+*{
+    transition: 0.5s;
+    backdrop-filter: blur (50px);
+}
+
+.gbutton-primary {
+    height: 50px;
+    min-width: 150px;
+    max-width: 1000000px;
+    background-color: rgb(232, 232, 232);
+    border: 0px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gbutton-primary img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.gbutton-primary:hover{
+    background-color: rgb(211, 211, 211);
+}
+
+.gbutton-primary:active{
+    background-color: rgb(190,190,190);
+}
+
+
+.gbutton-secondary {
+    height: 50px;
+    min-width: 150px;
+    max-width: 1000000px;
+    background-color: rgb(0, 98, 255);
+    border: 0px solid transparent;
+    border-top: 2px solid rgb(11, 125, 255);
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.gbutton-secondary:hover{
+    height: 50px;
+    min-width: 150px;
+    max-width: 1000000px;
+    background-color: rgb(51, 129, 255);
+    border: 0px solid transparent;
+    border-top: 2px solid rgb(48, 145, 255);
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.gbutton-secondary:active{
+    height: 50px;
+    min-width: 150px;
+    max-width: 1000000px;
+    background-color: rgb(3, 80, 203);
+    border: 0px solid transparent;
+    border-top: 2px solid rgb(0, 119, 255);
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+
+.ginput-primary {
+    height: 50px;
+    width: auto;
+    border: 1px solid rgb(232, 232, 232);
+    color: dimgray;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+.ginput-primary:hover{
+    cursor: pointer;
+    border: 1px solid rgb(0, 98, 255);
+}
+.ginput-primary:focus{
+    cursor: text;
+    border: 1px solid rgb(0, 98, 255);
+    outline: 4px solid rgba(0, 98, 255, 0.2);
+}
+
+
+.ginput-secondary {
+    height: 50px;
+    width: auto;
+    border: 0px;
+    border-bottom: 2px solid rgb(232, 232, 232);
+    color: dimgray;
+    border-radius: 3px;
+    padding-left: 10px;
+    outline: none;
+}
+.ginput-secondary:hover{
+    cursor: pointer;
+    border-bottom: 2px solid rgb(0, 98, 255);
+}
+.ginput-secondary:focus{
+    cursor: text;
+    border-bottom: 3px solid rgb(0, 98, 255);
+    /* outline: 4px solid rgba(0, 98, 255, 0.2); */
+}

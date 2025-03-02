@@ -1,0 +1,2 @@
+// This is the gavato theme
+document.head.innerHTML += `<style>

@@ -1,0 +1,38 @@
+// This is the build file for the mklib to make library from
+// show_logs (true); // only if you want to see logs or internal process
+// main config
+output (gavato.lib);
+output_directory (.);
+
+// please setup native theme from here.
+extension (temp); // declare the extension
+source_path (src/templates);
+include (gavato.style.start);
+source_path (src/themes);
+extension (css); // declare the extension
+include (gavato-light); // replace with your css theme
+source_path (src/templates);
+extension (temp); // declare the extension
+include (gavato.style.end);
+
+// reset for js config
+extension (js);
+
+// Including all the dependencies/libraries
+source_path (src/libraries);
+include (hlwtk/hlwtk);
+include (lwce/lwce.lib);
+include (gtg.android/gtg.android);
+
+// Including all the files
+source_path (src);
+include (gavato.core);
+include (gavato);
+
+// Widgets
+include (widgets/gwidget);
+include (widgets/gbutton);
+include (widgets/ginput);
+
+// Finally make the config
+make ();
