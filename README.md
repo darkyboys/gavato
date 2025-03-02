@@ -31,7 +31,7 @@ cd mklib
 
 # g++ direct
 mkdir bin
-g++ -std=c++17 -o bin/mklib src/main.cc
+g++ -std=c++17 -Iinclude -o bin/mklib src/main.cc
 
 # Move the binary to a directory in your PATH
 mv bin/mklib /usr/local/bin/
@@ -55,7 +55,7 @@ cd mklib
 
 # g++ direct
 mkdir bin
-g++ -std=c++17 -o bin/mklib src/main.cc
+g++ -std=c++17 -Iinclude -o bin/mklib src/main.cc
 
 # Gavato
 git clone https://github.com/darkyboys/gavato.git
