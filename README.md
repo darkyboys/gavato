@@ -43,6 +43,27 @@ sudo mv bin/mklib /usr/local/bin/
    - Make Gavato Library by opening the directory where you have gavato source.
     - Run `mklib`, This will make gavato.lib.js and now you only need to include gavato.lib.js anywhere you want to use gavato.
 
+Full commands
+```bash
+# Clone the repository
+git clone https://github.com/darkyboys/mklib.git
+cd mklib
+
+# Build using magma build system or a simple g++ command
+# Un comment if want to use magma build system
+# magma
+
+# g++ direct
+mkdir bin
+g++ -std=c++17 -o bin/mklib src/main.cc
+
+# Gavato
+git clone https://github.com/darkyboys/gavato.git
+cp bin/mklib gavato
+cd gavato
+./mklib
+```
+
 **2nd Way**
     - Checkout the releases there you will find the `gavato.lib.js` this is the pre-built library which this repository provides you can just download and include it anywhere you want!
 
