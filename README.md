@@ -40,7 +40,7 @@ If got any permission error use:
 ```bash
 sudo mv bin/mklib /usr/local/bin/
 ```
-    - Make Gavato Library by opening the directory where you have gavato source.
+   - Make Gavato Library by opening the directory where you have gavato source.
     - Run `mklib`, This will make gavato.lib.js and now you only need to include gavato.lib.js anywhere you want to use gavato.
 
 **2nd Way**
