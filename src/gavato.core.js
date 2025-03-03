@@ -35,7 +35,7 @@ function gavato_widget_render (__WIDGET__, __parent__) {
     if (__parent__.ghlwtk) __WIDGET__.ghlwtk.control.make (__parent__.ghlwtk, HLWTK_COMPONENT);
     else __WIDGET__.ghlwtk.control.make (__parent__);
     if (screen.width <= 400){
-        GTG_applyRippleEffect('button', 'rgba(0, 0, 0, 0.5);');
+        GTG_applyRippleEffect('button', 'rgba(0, 0, 0, 0.1);');
     }
 }
 
@@ -43,7 +43,7 @@ function gavato_widget_rerender (__WIDGET__, __parent__) {
     if (__parent__.ghlwtk) __WIDGET__.ghlwtk.control.bake (__parent__.ghlwtk, HLWTK_COMPONENT);
     else __WIDGET__.ghlwtk.control.bake (__parent__);
     if (screen.width <= 400){
-        GTG_applyRippleEffect('button', 'rgba(0, 0, 0, 0.5);');
+        GTG_applyRippleEffect('button', 'rgba(0, 0, 0, 0.1);');
     }
 }
 
@@ -124,7 +124,17 @@ function gavato_widget_make_param (__target__, __params__,__WIDGET__){
     if (document.getElementById(__WIDGET__.pkg_config.pkg)) document.getElementById(__WIDGET__.pkg_config.pkg).setAttribute(__target__, __params__);
     else console.error ('Gavato Core Error -> __target__ <' + __target__ + '> was not found in the given __WIDGET__ <' + __WIDGET__ + '>, Ignoring __params__ <' + __params__ + '>');
 }
-
+function gavato_widget_has_param (__target__, __WIDGET__){
+    let rval = 0;
+    if (gavato_is_widget(__WIDGET__)){
+        if (document.getElementById(__WIDGET__.pkg_config.pkg).hasAttribute(__target__)) rval = 1;
+    }
+    return rval;
+}
+function gavato_widget_update_param (__target__, __params__, __WIDGET__){
+    if (!gavato_widget_has_param(__target__, __WIDGET__)) gavato_widget_make_param (__target__, __params__, __WIDGET__);
+    else gavato_widget_set_param (__target__, (gavato_widget_get_param(__target__, __WIDGET__) + __params__), __WIDGET__);
+}
 
 
 function gavato_widget_signal (__target__, __WIDGET__, __params__){
@@ -140,13 +150,19 @@ function gavato_widget_valid (__WIDGET__){
     return __params__;
 }
 
-// Comming Soon!
-// function gavato_widget_add_effect (__target__, __WIDGET__){
-//     if (!gavato_widget_valid(__WIDGET__)) console.error ('Gavato Core Error -> __WIDGET__ <' + __WIDGET__ + '> is invalid');
-//     else {
-//         if (__target__ == 'movable'){
-            
-//         }
-//         else console.error ('Gavato Core Error -> __target__ <' + __target__ + '> was unknown, Needs a valid effect: use movable instead');
-//     }
-// }
+
+function gavato_widget_add_effect (__target__, __WIDGET__, __params__){
+    if (!gavato_widget_valid(__WIDGET__)) console.error ('Gavato Core Error -> __WIDGET__ <' + __WIDGET__ + '> is invalid');
+    else {
+        if (__target__ == 'position'){
+            gavato_widget_update_param ('style', `position: relative;left: ${__params__[0]}px;top: ${__params__[1]}px;`, __WIDGET__);
+        }
+        else if (__target__ == 'rotation'){
+            gavato_widget_update_param ('style', `transform: rotate(${__params__}deg);`, __WIDGET__);
+        }
+        else if (__target__ == 'scale'){
+            gavato_widget_update_param ('style', `transform: scale(${__params__});`, __WIDGET__);
+        }
+        else console.error ('Gavato Core Error -> __target__ <' + __target__ + '> was unknown, Needs a valid effect: use movable instead');
+    }
+}

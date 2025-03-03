@@ -246,5 +246,75 @@ Checks if a widget object is valid.
 **Returns:**
 - `1` if the widget is valid, otherwise `0`. 
 
+---
+
+### `gavato_widget_has_param (__target__, __WIDGET__)`
+**Description:**
+Checks if a widget object contains a html attribute as per the given __target__.
+
+**Parameters:**
+- `__WIDGET__` (Object) - Widget object to be checked.
+
+**Returns:**
+- `1` if the attribute found, otherwise `0`. 
+
+---
+
+### `gavato_widget_update_param (__target__, __params__, __WIDGET__)`
+**Description:**
+Updates a attribute of the given widget object. __target__ is the attribute to be updated and __param__ is the value to be appened.
+
+**Parameters:**
+- `__WIDGET__` (Object) - Widget object to be updated.
+
+**Returns:**
+- Nothing
+
+---
+
+###  `gavato_widget_add_effect(__target__, __WIDGET__, __params__)`
+**Description:**
+Applies a visual effect to a widget.
+ - target is the effect to be applied
+ - WIDGET is the widget on which the effects will be applied
+ - params some parameters for effect, It could be positions or rotations anything.
+
+
+**Parameters:**
+- `__target__` - Effect
+- `__WIDGET__` (Object) - Widget object to be effected.
+- `__params__` - Parameters For Effect
+
+**Effects**
+- `position`: Changes the position of any rendered widget, Needs the parameters (x,y) as [x,y] array.
+
+```js
+// example
+gavato_widget_add_effect('position', myWidget, [10, 20]);
+// from x to 10 and y to 20 pixels
+```
+
+
+- `rotation`: Changes the rotation of any rendered widget, Only needs the rotation_degrees.
+
+```js
+// example
+gavato_widget_add_effect('rotation', myWidget, 45); // 45 degrees rotation
+```
+
+
+- `scale`: Changes the scale of any rendered widget, Only needs the scaling times.
+
+```js
+// example
+gavato_widget_add_effect('scale', myWidget, 2); // 2x scale
+```
+
+**Returns:**
+- Nothing
+
+**Documentation ends here**
+
+
 ## Contributing?
 Check out the [Guidelines](CONTRIBUTING.md)
