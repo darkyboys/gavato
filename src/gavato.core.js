@@ -166,3 +166,38 @@ function gavato_widget_add_effect (__target__, __WIDGET__, __params__){
         else console.error ('Gavato Core Error -> __target__ <' + __target__ + '> was unknown, Needs a valid effect: use movable instead');
     }
 }
+
+
+
+// Update 3 by ghgltggamer on 3:52Pm 3/4/25
+function gavato_widget_remove (__WIDGET__){
+    if (gavato_is_widget(__WIDGET__)) {
+        __WIDGET__.ghlwtk.control.destroy();
+    }
+    else {
+        console.log ("Gavato Core Error -> __WIDGET__ <" + __WIDGET__ + "> is not a gavato widget");
+    }
+}
+
+
+function gavato_widget_clean (__WIDGET__){
+    if (gavato_is_widget(__WIDGET__)) {
+        __WIDGET__.ghlwtk.control.dispose(HLWTK_DISPOSE_EVERYTHING);
+    }
+    else {
+        console.log ("Gavato Core Error -> __WIDGET__ <" + __WIDGET__ + "> is not a gavato widget");
+    }
+}
+
+function gavato_widget_erase (__WIDGET__, __target__){
+    if (gavato_is_widget(__WIDGET__)) {
+        __WIDGET__.ghlwtk.control.dispose(__target__);
+    }
+    else {
+        console.log ("Gavato Core Error -> __WIDGET__ <" + __WIDGET__ + "> is not a gavato widget");
+    }
+}
+
+
+
+// Update ended 3 by ghgltggamer on 4:05Pm 3/4/25

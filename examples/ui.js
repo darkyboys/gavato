@@ -74,11 +74,28 @@ let main_box = ginput('', 'email@example.com', 'email');
 // Renders
 gavato_widget_render (button, app);
 gavato_widget_render (main_box, app);
+gavato_widget_rerender (main_box, app);
+gavato_widget_rerender (main_box, app);
+gavato_widget_rerender (main_box, app);
+gavato_widget_rerender (main_box, app);
+gavato_widget_rerender (main_box, app);
+gavato_widget_rerender (main_box, app);
+gavato_widget_rerender (main_box, app);
 
-gavato_widget_add_effect ('position', main_box, [0, -8])
-gavato_widget_add_effect ('rotation', main_box, 45)
-gavato_widget_add_effect ('position', main_box, [0, -19])
-gavato_widget_add_effect ('scale', main_box, 2)
+gavato_widget_add_effect ('position', main_box, [0, 10]);
+// gavato_widget_add_effect ('position', main_box, [0, -8])
+// gavato_widget_add_effect ('rotation', main_box, 45)
+// gavato_widget_add_effect ('position', main_box, [0, -19])
+// gavato_widget_add_effect ('scale', main_box, 2)
 // gavato_widget_update_param ('style', 'color: black;', main_box)
 // gavato_widget_update_param ('style', 'color: dodgerblue;', main_box)
 // console.log (gavato_widget_has_param('id', main_box)? true : false)
+
+
+// gavato_widget_remove(main_box);
+// gavato_widget_render(main_box, app);
+setTimeout(() => {
+    // gavato_widget_remove (main_box);
+    gavato_widget_clean (main_box);
+    // gavato_widget_erase (main_box, 3);
+}, 5000);

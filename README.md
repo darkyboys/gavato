@@ -313,6 +313,50 @@ gavato_widget_add_effect('scale', myWidget, 2); // 2x scale
 **Returns:**
 - Nothing
 
+
+### `gavato_widget_remove (__WIDGET__)`
+**Description:**
+This will remove any rendered widget from the viewport.
+
+
+**Parameters:**
+ - `__WIDGET__`: This is the widget to be removed from the viewport.
+
+
+**Returns:**
+Nothing.
+
+---
+
+### `gavato_widget_clean (__WIDGET__)`
+**Description:**
+This will remove all re-rendered widgets of a rendered widget from the viewport.
+
+
+**Parameters:**
+ - `__WIDGET__`: This is the widget to be targeted from the viewport.
+
+
+**Returns:**
+Nothing.
+
+---
+
+### `gavato_widget_erase (__WIDGET__, __target__)`
+**Description:**
+This will remove a particular re-rendered widget from a set of re-rendered widgets of a rendered widget from the viewport.
+
+
+**Parameters:**
+ - `__WIDGET__`: This is the widget to be targeted from the viewport.
+ - `__target__`: This is the index of the widget to be removed.
+
+
+**Returns:**
+Nothing.
+
+--- 
+
 **Documentation ends here**
 
 
