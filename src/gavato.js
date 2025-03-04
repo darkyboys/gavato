@@ -11,7 +11,7 @@
 // import { gbutton } from "./widgets/gbutton.js";
 // import { ginput } from "./widgets/ginput.js";
 
-const GAVATO_VERSION = 1.0;
+const GAVATO_VERSION = 1.2;
 // export {
 //     gbutton,
 //     ginput
