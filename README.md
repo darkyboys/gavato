@@ -167,6 +167,47 @@ function ginput(value='', placeholder='', type='text'){
 
 ---
 
+### `gcontainer(width, height)`
+**Description:**
+Creates a container, For holding other widgets (Visually).
+
+**Parameters:**
+- `width` (Integer) - Set's the width of the container (required).
+- `height` (Integer) - Set's the height of the container (required).
+
+**Returns:**
+- A Container Which Can Be Used The Visually Combining Other Widgets.
+
+**Example:**
+```javascript
+let container = gcontainer (300, 200); // A 300x200 container
+```
+
+**Note:**
+For Adding other widgets to the container visually, Please use the [gavato_widget_add_widget] (###gavato_widget_add_widget), Because normal rendering will only affect the container not the data of the container, And visually you will need to add the widget to the container's data.
+
+---
+
+### `gspacer(width, height)`
+**Description:**
+Creates a spacer, For adding the space between multiple widgets.
+
+**Parameters:**
+- `width` (Integer) - Set's the width of the spacer (required).
+- `height` (Integer) - Set's the height of the spacer (required).
+
+**Returns:**
+- A Spacer For Adding Space, In between 2 widgets.
+
+**Example:**
+```javascript
+let container = gspacer (300, 200); // A 300x200 spacer
+```
+
+---
+
+## Gavato Core
+
 ### `gavato_pkg_new(len = 64)`
 **Description:**
 Generates a random package identifier of the specified length.
@@ -357,8 +398,73 @@ Nothing.
 
 --- 
 
+### `gavato_theme_clear ()`
+**Description:**
+This will clear the default gavato light theme comes prebuilt with gavato, In order to allow you using custom themes.
+
+
+**Parameters:**
+ - Nothing
+
+
+**Returns:**
+Nothing.
+
+--- 
+
+### `gavato_widget_add_widget (__WIDGET__, ___WIDGET___)`
+**Description:**
+In gavato a widget is different from it's data, What you manages is widget in gavato but what you visually see on screen is the data of widget not the widget, So rendering a widget inside a widget doesn't makes tear or overwritten effect , Because it's rendered inside another widget but not affected the data, But in case you want to affect data or add a widget inside another widget visually like adding a button to a container , Then you will need to render the button in the data of the container not just the standard container widget, This is deeper thing so gavato provides you this function to render the widgets inside the data of another widget.
+
+*Note: The Widgets must be already rendered if not.*
+
+
+**Parameters:**
+ - `__WIDGET__` : The widget whose data will be the one , The another widget be appended to.
+ - `___WIDGET___` : The widget which will be rendered in the data of the first widget.
+
+
+**Returns:**
+Nothing.
+
+--- 
+
+### `gavato_widget_data_transfer (__target__, __WIDGET__)`
+**Description:**
+This function is used to transfer the data of a widget into another widget, but doesn't transfers the entire widget, And Once the data is transfered, The transfered widget no longer remains a gavato widget, It becomes a standard HTML Element which then can be accessed using DOM of JavaScript and typecasted to be a gavato widget again.
+
+*Note: The widgets must be already Rendered if not*
+
+
+**Parameters:**
+ - `__target__` : The widget whose data will be the one , The another widget's data be appended to.
+ - `___WIDGET___` : The widget whose data will be rendered in the data of the first widget.
+
+
+**Returns:**
+Nothing.
+
+---
+
+### `gavato_widget_link (__WIDGET__, ___WIDGET___)`
+**Description:**
+This function links the data of the 2 given widgets the returns the widget which is containing the linked widgets.
+
+
+**Parameters:**
+ - `__WIDGET__` : The first widget to be linked with another.
+ - `___WIDGET___` : The second widget to be linked with first.
+
+
+**Returns:**
+Nothing.
+
+---
+
 **Documentation ends here**
 
 
 ## Contributing?
 Check out the [Guidelines](CONTRIBUTING.md)
+
+Copyright (c) ghgltggamer 2025 06:34PM 3/10/25

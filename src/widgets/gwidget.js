@@ -21,4 +21,3 @@ function gwidget(name='gavato-gwidget'){
         pkg_config: pkg_config,
     }
 }
-

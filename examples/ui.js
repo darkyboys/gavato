@@ -64,38 +64,91 @@
 
 
 // Simple Application In Gavato
-let app = document.body;
+// gavato_theme_clear ();
+// let app = document.body;
 // Theming
-gwidget_default_style = 'secondary';
+// gwidget_default_style = 'secondary';
 
-let button = gbutton('Send Main');
-let main_box = ginput('', 'email@example.com', 'email');
+// let button = gbutton('Send Main');
+// gwidget_default_style = 'secondary';
+// let main_box = ginput('', 'email@example.com', 'email');
 
-// Renders
-gavato_widget_render (button, app);
-gavato_widget_render (main_box, app);
-gavato_widget_rerender (main_box, app);
-gavato_widget_rerender (main_box, app);
-gavato_widget_rerender (main_box, app);
-gavato_widget_rerender (main_box, app);
-gavato_widget_rerender (main_box, app);
-gavato_widget_rerender (main_box, app);
-gavato_widget_rerender (main_box, app);
+// gavato_widget_signal ('click', button, ()=>{
+//     alert (gavato_widget_convert (main_box, GAVATO_JS_ELEMENT).value);
+// })
+// // gavato_widget_set_param ('class', 'ginput-secondary', main_box);
+// // Renders
+// gavato_widget_render (button, app);
+// gavato_widget_render (main_box, app);
+// // gavato_widget_rerender (main_box, app);
+// // gavato_widget_rerender (main_box, app);
+// // gavato_widget_rerender (main_box, app);
+// // gavato_widget_rerender (main_box, app);
+// // gavato_widget_rerender (main_box, app);
+// // gavato_widget_rerender (main_box, app);
+// // gavato_widget_rerender (main_box, app);
 
-gavato_widget_add_effect ('position', main_box, [0, 10]);
-// gavato_widget_add_effect ('position', main_box, [0, -8])
-// gavato_widget_add_effect ('rotation', main_box, 45)
-// gavato_widget_add_effect ('position', main_box, [0, -19])
-// gavato_widget_add_effect ('scale', main_box, 2)
-// gavato_widget_update_param ('style', 'color: black;', main_box)
-// gavato_widget_update_param ('style', 'color: dodgerblue;', main_box)
-// console.log (gavato_widget_has_param('id', main_box)? true : false)
+// gavato_widget_add_effect ('position', main_box, [0, 10]);
+// // gavato_widget_add_effect ('position', main_box, [0, -8])
+// // gavato_widget_add_effect ('rotation', main_box, 45)
+// // gavato_widget_add_effect ('position', main_box, [0, -19])
+// // gavato_widget_add_effect ('scale', main_box, 2)
+// // gavato_widget_update_param ('style', 'color: black;', main_box)
+// // gavato_widget_update_param ('style', 'color: dodgerblue;', main_box)
+// // console.log (gavato_widget_has_param('id', main_box)? true : false)
 
 
-// gavato_widget_remove(main_box);
-// gavato_widget_render(main_box, app);
-setTimeout(() => {
-    // gavato_widget_remove (main_box);
-    gavato_widget_clean (main_box);
-    // gavato_widget_erase (main_box, 3);
-}, 5000);
+// // gavato_widget_remove(main_box);
+// // gavato_widget_render(main_box, app);
+// // setTimeout(() => {
+// //     // gavato_widget_remove (main_box);
+// //     gavato_widget_clean (main_box);
+// //     // gavato_widget_erase (main_box, 3);
+// // }, 5000);
+
+
+// let btn = gbutton ('Click me!');
+// let inp = ginput ('', 'Email', 'email');
+// let container = gcontainer ();
+
+// gavato_widget_render (btn, document.body);
+// gavato_widget_render (inp, document.body);
+// gavato_widget_add_effect ('position', inp, [0, 10]);
+
+
+
+// gavato_widget_signal ('mousedown', btn, ()=>{
+//     alert (gavato_widget_convert(inp, GAVATO_JS_ELEMENT).firstElementChild.value);
+// })
+
+
+// // gavato_widget_signal ('click', btn, ()=>{
+//     // console.log (inp)
+//     let js = gavato_widget_convert(inp, GAVATO_JS_ELEMENT);
+//     // gavato_widget_render (js, document.body);
+//     console.log (gavato_widget_convert(gavato_element_convert(gavato_widget_convert(gavato_element_convert (js, GAVATO_JS_ELEMENT), GAVATO_JS_ELEMENT), GAVATO_JS_ELEMENT), GAVATO_HTML_ELEMENT));
+//     // console.log (gavato_widget_convert(gavato_element_convert(gavato_widget_convert (js, GAVATO_JS_ELEMENT), GAVATO_JS_ELEMENT), GAVATO_JS_ELEMENT).value);
+// // })
+
+// gavato_theme_clear ();
+
+// let button = gbutton ('Log in');
+// let input = ginput ('', 'Email', 'email');
+// let container = gcontainer (250, 300);
+
+// gavato_widget_render (button, input);
+// gavato_widget_render (input, container);
+// gavato_widget_render (container, document.body);
+// gavato_widget_add_widget (container, input);
+
+
+// // console.clear();
+// // console.log (gavato_widget_convert (container, GAVATO_JS_ELEMENT));
+// // gavato_widget_add_effect ('top_center', container);
+
+// gavato_widget_signal ('click', button, ()=>{
+//     alert (gavato_widget_convert(input, GAVATO_JS_ELEMENT).firstElementChild.value);
+// })
+
+
+// console.log (gavato_widget_convert (gavato_element_convert(gavato_widget_convert (gavato_element_convert(gavato_widget_convert(input, GAVATO_JS_ELEMENT), GAVATO_JS_ELEMENT), GAVATO_JS_ELEMENT), GAVATO_JS_ELEMENT), GAVATO_HTML_ELEMENT));

@@ -61,9 +61,9 @@ function gavato_widget_set_arg (__args__, __value__, __WIDGET__) {
 
 function gavato_widget_convert (__WIDGET__, __target__) {
     let convertX;
-    if (__WIDGET__.ghlwtk){
+    if (__WIDGET__.ghlwtk != null){
         if (__target__ == GAVATO_HLWTK_ELEMENT) convertX = __WIDGET__.ghlwtk;
-        else if (__target__ == GAVATO_HTML_ELEMENT) convertX = __WIDGET__.ghlwtk.control.content();
+        else if (__target__ == GAVATO_HTML_ELEMENT) convertX = __WIDGET__.ghlwtk.hlwtk_component_root.innerHTML;
         else if (__target__ == GAVATO_JS_ELEMENT) convertX = __WIDGET__.ghlwtk.hlwtk_component_root;
         else if (__target__ == GAVATO_WIDGET_ELEMENT) convertX = __WIDGET__;
         else {
@@ -138,7 +138,7 @@ function gavato_widget_update_param (__target__, __params__, __WIDGET__){
 
 
 function gavato_widget_signal (__target__, __WIDGET__, __params__){
-    if (document.getElementById(__WIDGET__.pkg_config.pkg)) document.getElementById(__WIDGET__.pkg_config.pkg).addEventListener('click', __params__);
+    if (document.getElementById(__WIDGET__.pkg_config.pkg)) document.getElementById(__WIDGET__.pkg_config.pkg).addEventListener(__target__, __params__);
     else console.error ('Gavato Core Error -> __target__ <' + __target__ + '> was not found in the given __WIDGET__ <' + __WIDGET__ + '>, Ignoring __params__ <' + __params__ + '>'), __params__ = 'Gavato Core Error -> __target__ <' + __target__ + '> was not found in the given __WIDGET__ <' + __WIDGET__ + '>, Ignoring __params__ <' + __params__ + '>';
 }
 
@@ -163,6 +163,11 @@ function gavato_widget_add_effect (__target__, __WIDGET__, __params__){
         else if (__target__ == 'scale'){
             gavato_widget_update_param ('style', `transform: scale(${__params__});`, __WIDGET__);
         }
+        else if (__target__ == 'top_center'){
+            let top_positon = (screen.height/2);
+            // console.log (top_positon);
+            // console.log (gavato_widget_convert(__WIDGET__, GAVATO_JS_ELEMENT));
+        }
         else console.error ('Gavato Core Error -> __target__ <' + __target__ + '> was unknown, Needs a valid effect: use movable instead');
     }
 }
@@ -175,7 +180,7 @@ function gavato_widget_remove (__WIDGET__){
         __WIDGET__.ghlwtk.control.destroy();
     }
     else {
-        console.log ("Gavato Core Error -> __WIDGET__ <" + __WIDGET__ + "> is not a gavato widget");
+        console.error ("Gavato Core Error -> __WIDGET__ <" + __WIDGET__ + "> is not a gavato widget");
     }
 }
 
@@ -185,7 +190,7 @@ function gavato_widget_clean (__WIDGET__){
         __WIDGET__.ghlwtk.control.dispose(HLWTK_DISPOSE_EVERYTHING);
     }
     else {
-        console.log ("Gavato Core Error -> __WIDGET__ <" + __WIDGET__ + "> is not a gavato widget");
+        console.error ("Gavato Core Error -> __WIDGET__ <" + __WIDGET__ + "> is not a gavato widget");
     }
 }
 
@@ -194,10 +199,59 @@ function gavato_widget_erase (__WIDGET__, __target__){
         __WIDGET__.ghlwtk.control.dispose(__target__);
     }
     else {
-        console.log ("Gavato Core Error -> __WIDGET__ <" + __WIDGET__ + "> is not a gavato widget");
+        console.error ("Gavato Core Error -> __WIDGET__ <" + __WIDGET__ + "> is not a gavato widget");
     }
 }
 
 
 
 // Update ended 3 by ghgltggamer on 4:05Pm 3/4/25
+
+// Update 4 started by ghgltggamer on 12:17pm 3/7/25
+function gavato_theme_clear(){
+    document.getElementById ('gavato-application-theme').innerHTML = "";
+}
+
+function gavato_widget_add_widget (__target__, __WIDGET__){
+    if (gavato_widget_valid(__target__) && gavato_widget_valid(__WIDGET__)){
+        document.getElementById(__target__.pkg_config.pkg).appendChild(document.getElementById(__WIDGET__.pkg_config.pkg).parentElement);
+        // console.log ("Config: "+__target__.pkg_config.pkg);
+        // console.log ("Config: "+__WIDGET__.pkg_config.pkg);
+    }
+    else {
+        console.error ("Gavato Core Error _> Invalid __target__ and invalid __WIDGET__, A Valid Gavato widget expected. Please use typecasting to proceed.");
+    }
+}
+
+
+function gavato_widget_data_transfer (__target__, __WIDGET__){
+    if (gavato_widget_valid(__target__) && gavato_widget_valid(__WIDGET__)){
+        document.getElementById(__target__.pkg_config.pkg).appendChild(document.getElementById(__WIDGET__.pkg_config.pkg));
+        // console.log ("Config: "+__target__.pkg_config.pkg);
+        // console.log ("Config: "+__WIDGET__.pkg_config.pkg);
+    }
+    else {
+        console.error ("Gavato Core Error _> Invalid __target__ and invalid __WIDGET__, A Valid Gavato widget expected. Please use typecasting to proceed.");
+    }
+}
+
+
+
+function gavato_widget_link (__WIDGET__, ___WIDGET___){
+    let linked_widget_return;
+    if (gavato_widget_valid(__WIDGET__) && gavato_widget_valid(___WIDGET___)){
+        // document.getElementById(__target__.pkg_config.pkg).appendChild(document.getElementById(__WIDGET__.pkg_config.pkg));
+        let linked_widget = gwidget();
+        linked_widget.ghlwtk.hlwtk_component_root.appendChild(__WIDGET__.ghlwtk.hlwtk_component_root);
+        linked_widget.ghlwtk.hlwtk_component_root.appendChild(___WIDGET___.ghlwtk.hlwtk_component_root);
+        linked_widget_return = linked_widget;
+        // console.log ("Config: "+__target__.pkg_config.pkg);
+        // console.log ("Config: "+__WIDGET__.pkg_config.pkg);
+    }
+    else {
+        console.error ("Gavato Core Error _> Invalid __WIDGET__ and invalid ___WIDGET___, A Valid Gavato widget expected. Please use typecasting to proceed.");
+    }
+    return linked_widget_return;
+}
+
+// Update 4 ended by ghgltggamer on 6:06PM 3/10/25

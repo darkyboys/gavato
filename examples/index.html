@@ -5,14 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gavato Test</title>
     <!-- <link rel="stylesheet" href="themes/gavato-light.css"> -->
+    <link id="css-theme" rel="stylesheet" href="../src/themes/gavato-dark.css">
 </head>
 <body>
-    
+    <center id="center">
+
+    </center>
 </body>
 <!-- <script type="module" src="ui.js"></script> -->
 <script src="../gavato.lib.js"></script>
 <script src="ui.js"></script>
 <script>
-    GTG_applyRippleEffect('button', 'rgba(0, 0, 0, 0.5);');
+    let css_theme = document.getElementById("css-theme");
+    gavato_theme_clear();
+    gwidget_default_style = "secondary";
+    let spacer_top = gspacer (10, ((screen.height / 2) - 300));
+
+    let container = gcontainer (200, 300);
+    let email = ginput ('', 'Email', 'email');
+    let password = ginput ('', 'Password', 'password');
+    let signin = gbutton ('Sign in');
+    let signup = gbutton ('Sign up');
+    let space = gspacer (10, 40);
+
+    let link = gavato_widget_link (signin, signup);
+
+    gavato_widget_render (space, password);
+    gavato_widget_render (link, password);
+    gavato_widget_render (password, email);
+    gavato_widget_render (email, container);
+    gavato_widget_render (spacer_top, document.getElementById('center'));
+    gavato_widget_render (container, spacer_top);
+    gavato_widget_add_widget (container, email);
+    
+    gavato_widget_make_param ('style', 'margin-bottom: 20px;', signin);
+    gavato_widget_make_param ('style', 'background: green;border-top-color: green;', signup);
+
+    // alert (gavato_widget_convert (signup, GAVATO_JS_ELEMENT).firstElementChild.style.backgroundColor);
+    gavato_widget_update_param ('style', `box-shadow: 0px 0px 10px ${gavato_widget_convert (signup, GAVATO_JS_ELEMENT).firstElementChild.style.backgroundColor};`, signup)
+    // GTG_applyRippleEffect('button', 'rgba(0, 0, 0, 0.5);');
+
+    gavato_widget_signal ('click', signin, ()=>{
+        css_theme.href = "../src/themes/gavato-light.css";
+    })
+
+    gavato_widget_signal ('click', signup, ()=>{
+        css_theme.href = "../src/themes/gavato-dark.css";
+    })
 </script>
 </html>

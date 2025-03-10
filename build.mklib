@@ -33,6 +33,8 @@ include (gavato);
 include (widgets/gwidget);
 include (widgets/gbutton);
 include (widgets/ginput);
+include (widgets/gcontainer);
+include (widgets/gspacer);
 
 // Finally make the config
 make ();
