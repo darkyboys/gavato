@@ -1,0 +1,1 @@
+document.head.innerHTML += `<div id='gavato-animations'><style>

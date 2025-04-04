@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gavato Test</title>
     <!-- <link rel="stylesheet" href="themes/gavato-light.css"> -->
-    <link id="css-theme" rel="stylesheet" href="../src/themes/gavato-dark.css">
+    <!-- <link id="css-theme" rel="stylesheet" href="../src/themes/gavato-dark.css"> -->
 </head>
-<body>
+<body style="background-image: url('https://cdn.pixabay.com/photo/2024/09/08/20/30/architecture-9033164_960_720.jpg');">
+    <!-- <iframe src="/src/themes//gavato-dark.css" frameborder="0"></iframe> -->
     <center id="center">
 
     </center>
@@ -16,8 +17,10 @@
 <script src="../gavato.lib.js"></script>
 <script src="ui.js"></script>
 <script>
-    let css_theme = document.getElementById("css-theme");
+    // let css_theme = document.getElementById("css-theme");
     gavato_theme_clear();
+    // gavato_theme_change ('gavato');
+    
     gwidget_default_style = "secondary";
     let spacer_top = gspacer (10, ((screen.height / 2) - 300));
 
@@ -27,9 +30,15 @@
     let signin = gbutton ('Sign in');
     let signup = gbutton ('Sign up');
     let space = gspacer (10, 40);
+    /*let html = ghtml (`
+        <h1>Hello world 2025!</h1>
+        <hr>
+    `);*/
+    let heading = gheading ('Log in!', 1, 40);
 
     let link = gavato_widget_link (signin, signup);
 
+    gavato_widget_render (heading, document.getElementById('center'));
     gavato_widget_render (space, password);
     gavato_widget_render (link, password);
     gavato_widget_render (password, email);
@@ -37,7 +46,24 @@
     gavato_widget_render (spacer_top, document.getElementById('center'));
     gavato_widget_render (container, spacer_top);
     gavato_widget_add_widget (container, email);
-    
+    // gavato_widget_render (html, container);
+    // gavato_widget_add_widget (container, html);
+
+    // gavato_widget_set_param ('class', 'gcontainer-primary', container);
+    // gavato_widget_set_param ('class', 'gbutton-primary', signin);
+    // gavato_widget_set_param ('class', 'gbutton-primary', signup);
+    gavato_widget_add_effect ('glass', container, '255, 255, 255');
+    gavato_widget_add_effect ('glass', email, '255, 255, 255');
+    gavato_widget_add_effect ('glass', password, '255, 255, 255');
+    gavato_widget_add_effect ('glass', signin, '255, 255, 255');
+    gavato_widget_add_effect ('glass', signup, '255, 255, 255');
+    // gavato_widget_add_effect ('3d', container, ['rotation', [23,455,64]]);
+
+
+    gavato_widget_convert (email, GAVATO_JS_ELEMENT).firstElementChild.classList.add ("gtheme-important")
+
+    console.log (gwidget_capture_widgets);
+
     gavato_widget_make_param ('style', 'margin-bottom: 20px;', signin);
     gavato_widget_make_param ('style', 'background: green;border-top-color: green;', signup);
 
@@ -46,11 +72,13 @@
     // GTG_applyRippleEffect('button', 'rgba(0, 0, 0, 0.5);');
 
     gavato_widget_signal ('click', signin, ()=>{
-        css_theme.href = "../src/themes/gavato-light.css";
+        // css_theme.href = "../src/themes/gavato-light.css";
+        gavato_theme_change ('gavato');
     })
 
     gavato_widget_signal ('click', signup, ()=>{
-        css_theme.href = "../src/themes/gavato-dark.css";
+        // css_theme.href = "../src/themes/gavato-dark.css";
+        // gavato_theme_change_style ('gavato', 'primary');
     })
 </script>
 </html>

@@ -1,2 +1,3 @@
 // This is the gavato theme
+document.head.innerHTML += '<link rel="stylesheet" id="gavato-application-theme-link" href="/src/themes/gavato-light.css">'
 document.head.innerHTML += `<div id='gavato-application-theme'><style>

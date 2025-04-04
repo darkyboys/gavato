@@ -83,7 +83,7 @@ The Main documentation about Gavato.
 let gwidget_default_style = "primary";
 ```
 
-## Core Functions
+## Widgets / Core
 
 ### `gwidget(name='gavato-gwidget')`
 **Description:**
@@ -202,6 +202,70 @@ Creates a spacer, For adding the space between multiple widgets.
 **Example:**
 ```javascript
 let container = gspacer (300, 200); // A 300x200 spacer
+```
+
+---
+
+
+### `ghtml(html)`
+**Description:**
+Creates a gavato widget with html content.
+
+**Parameters:**
+- `html` (String) - The html content for the widget.
+
+**Returns:**
+- A html widget object.
+
+**Example:**
+```javascript
+let xhtml = ghtml(`
+    <div id="MyDiv">
+        Content of the div will go here ...
+    </div>
+`);
+```
+
+---
+
+### `gparagraph(text, word_spacing=1, line_height=20)`
+**Description:**
+Creates a gavato paragraph widget with defined word spacing and line height per line.
+
+**Parameters:**
+- `text` (String) - The text content for the widget.
+- `word_spacing` (Number) - Sets the space after each word for the widget.
+- `line_height` (Number) - Sets the height of each line for the widget.
+
+**Returns:**
+- A paragraph widget object.
+
+**Example:**
+```javascript
+let xhtml = ghtml(`
+    <div id="MyDiv">
+        Content of the div will go here ...
+    </div>
+`);
+```
+
+---
+
+### `gheading(text, size, font_size)`
+**Description:**
+Creates a heading widget with the specified text, size / variation and font_size.
+
+**Parameters:**
+- `text` (String) - Set's the text of heading (required).
+- `size` (Integer) - Set's the size of heading like 1 for h1, 2 for h2 ... to h6 (required).
+- `font_size` (Integer) - Set's the font size of the heading (required).
+
+**Returns:**
+- A Heading Widget.
+
+**Example:**
+```javascript
+let heading = gheading ('This is h1!', 1, 40); // A 40pixel big heading of h1 type and This is h1 as content.
 ```
 
 ---
@@ -351,6 +415,14 @@ gavato_widget_add_effect('rotation', myWidget, 45); // 45 degrees rotation
 gavato_widget_add_effect('scale', myWidget, 2); // 2x scale
 ```
 
+
+- `glass`: Turns the widget into a glass (Visual change), And takes the glass color in rgb form string like 255, 255, 255 for white etc.
+
+```js
+// example
+gavato_widget_add_effect('glass', myWidget, '255, 255, 255'); // 2x scale
+```
+
 **Returns:**
 - Nothing
 
@@ -458,6 +530,96 @@ This function links the data of the 2 given widgets the returns the widget which
 
 **Returns:**
 Nothing.
+
+---
+
+### `gavato_theme_change (theme_name='gavato')`
+**Description:**
+This function takes the theme name and then changes the current theme with light or dark mode depending on what is active. 
+
+
+**Parameters:**
+ - `theme_name` : Tells gavato for what theme name to use for example default theme is gavato and it's light variant you just call this function with theme name gavato and it will set the dark theme version of current theme.
+
+ - You can overide the following variables to set theme variant and theme source path.
+ ```javascript
+let gavato_current_theme_type = 'light'; // sets current theme variant
+let gavato_theme_source = '/src/themes/'; // sets theme source path, By default /src/themes/
+ ```
+
+ - How to create a theme ? Well you can use the gavato light and dark prebuilt themes to make your own theme.
+
+**Returns:**
+Nothing.
+
+---
+
+### `gavato_widget_convert (__WIDGET__, __target__)`
+**Description:**
+This function converts a gavato widget into another elements which includes.
+ - HLWTK Components
+ - HTML Elements
+ - JavaScript Node Elements
+ - Gavato Widget Itself
+
+
+**Parameters:**
+ - `__WIDGET__` : The widget to be converted (Gavato Widget Only).
+ - `__target__` : The Target element with there flag.
+
+**Flags** Tells the `gavato_widget_convert` to convert a gavato widget into it's type. Current flags includes.
+ - GAVATO_HLWTK_ELEMENT : For HLWTK Elements / Components
+ - GAVATO_HTML_ELEMENT  : For HTML Elements
+ - GAVATO_JS_ELEMENT    : For JavaScript Node Elements
+ - GAVATO_WIDGET_ELEMENT: For Gavato Widget self
+
+
+**Returns:**
+Converted element.
+
+**Example**
+```javascript
+let myButton = gbutton (`Click me!`);
+let javaScript_Element = gavato_widget_convert (myButton, GAVATO_JS_ELEMENT);
+// Now render the js element
+document.body.appendChild(javaScript_Element);
+```
+
+---
+
+### `gavato_element_convert (__WIDGET__, __target__)`
+**Description:**
+This function converts an element into a gavato widget for manipulation with gavato, Supported elements are
+ - HLWTK Components
+ - HTML Elements
+ - JavaScript Node Elements
+ - Gavato Widget Itself
+
+
+**Parameters:**
+ - `__WIDGET__` : The element to be converted into a gavato widget(Supported Elements Only).
+ - `__target__` : The Element type you are trying to convert into gavato widget for example the element is html element then you will need to use the correct flag for that othervise you may face unintended behavious.
+
+**Flags** Tells the `gavato_element_convert` to convert a supported element into a gavato widget type. Current flags includes.
+ - GAVATO_HLWTK_ELEMENT : For HLWTK Elements / Components
+ - GAVATO_HTML_ELEMENT  : For HTML Elements
+ - GAVATO_JS_ELEMENT    : For JavaScript Node Elements
+ - GAVATO_WIDGET_ELEMENT: For Gavato Widget self
+
+
+**Returns:**
+Converted element.
+
+**Example**
+```javascript
+let myButton = document.createElement ('button');
+myButton.innerText = "Click me!";
+
+let gavato_Widget = gavato_element_convert (myButton, GAVATO_JS_ELEMENT);
+gavato_widget_render (gavato_Widget, document.body);
+```
+
+`Note: You can do infinite type casting from a gavato widget -> js element -> gavato widget -> html element -> gavato widget -> hlwtk component -> gavato widget -> ..... infinity`
 
 ---
 

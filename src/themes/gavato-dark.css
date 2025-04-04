@@ -4,6 +4,11 @@
  * uses HLWTK As the core for drawing the widgets
  * Checkout the readme.md file for more information
 */
+
+.gtheme-important{
+    color: dodgerblue;
+}
+
 *{
     -webkit-tap-highlight-color: transparent;
 }
@@ -160,4 +165,13 @@ body {
     box-shadow: 0px -20px 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
     overflow: hidden;
+}
+
+/* Heading */
+.gheading-primary {
+    font-weight: normal;
+}
+
+.gheading-secondary {
+    /* color:rgb(0, 119, 255); */
 }

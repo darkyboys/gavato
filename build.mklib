@@ -15,6 +15,19 @@ source_path (src/templates);
 extension (temp); // declare the extension
 include (gavato.style.end);
 
+
+source_path (src/templates);
+include (gavato.animation.start);
+// Change animation set if needed
+source_path (src/animations);
+extension (css);
+include (gavato-default); // change this for animation
+// source_path (src/templates);
+extension (temp); // declare the extension
+source_path (src/templates);
+include (gavato.animation.end);
+
+
 // reset for js config
 extension (js);
 
@@ -35,6 +48,10 @@ include (widgets/gbutton);
 include (widgets/ginput);
 include (widgets/gcontainer);
 include (widgets/gspacer);
+include (widgets/ghtml);
+include (widgets/gheading);
+include (widgets/gparagraph);
+
 
 // Finally make the config
 make ();

@@ -1,28 +1,28 @@
-## Changes Made in the Gavato 1.3
+## Changes Made in the Gavato 1.4
 
- - Added theme management function `gavato_theme_clear`.
+ - Added theme management function `gavato_theme_change`.
  - Implemented the gavato-dark theme
- - Added GContainer widget with `gcontainer`.
- - Added GSpacer widget with `gspacer`.
+ - Added GParagraph widget with `gparagraph`.
+ - Added GHtml widget with `ghtml`.
+ - Added new glass effect which can be used with any widget via `gavato_widget_add_effect`.
  - Updated the `gavato_widget_convert` and `gavato_element_convert` for robust typecasting.
  - Updated the `build.mklib` file.
  - Made the Gavato Core A Lot Better.
- - Added Widget Data Manipulations with `gavato_widget_add_widget`, `gavato_widget_data_transfer`, `gavato_widget_link`.
 
-## Comparision with previous version (1.2)
+## Comparision with previous version (1.4)
 ```text
         ---------------------------------------------
         |                     |                     |
-        |         1.2         |         1.3         |
+        |         1.3         |         1.4         |
         |                     |                     |
-Stable  |          N          |          Y          |
+Stable  |          Y          |          N          |
 Docs    |          Y          |          Y          |
 Features|          N          |          Y          |
-Widgets |          N          |          Y          |
+Widgets |          L          |          M          |
 Syntax  |          Y          |          Y          |
-CodeBase|          N          |          Y          |
+CodeBase|          L          |          M          |
 Releases|          Y          |          Y          |
         ---------------------------------------------
 ```
 
-Here: Y - Yes, N - No, T - Tie
+Here: Y - Yes, N - No, T - Tie, L - Less, M - More

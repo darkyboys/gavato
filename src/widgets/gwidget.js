@@ -10,14 +10,17 @@
 
 // This is the gwidget widget
 let gwidget_default_style = "primary";
+let gwidget_capture_widgets = [];
 function gwidget(name='gavato-gwidget'){
     let root = HLWTK_Component();
     let pkg_config = {
         pkg: gavato_pkg_new(),
         pkg_name: name
     }
-    return {
+    let widget = {
         ghlwtk: root,
         pkg_config: pkg_config,
     }
+    gwidget_capture_widgets.push (widget);
+    return widget;
 }

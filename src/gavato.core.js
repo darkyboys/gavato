@@ -111,29 +111,29 @@ function gavato_is_widget (__WIDGET__) {
 
 
 function gavato_widget_set_param (__target__, __params__,__WIDGET__){
-    if (document.getElementById(__WIDGET__.pkg_config.pkg) && document.getElementById(__WIDGET__.pkg_config.pkg).getAttribute(__target__)) document.getElementById(__WIDGET__.pkg_config.pkg).setAttribute(__target__, __params__)
+    if (document.getElementById(__WIDGET__.pkg_config.pkg) && __WIDGET__.ghlwtk.hlwtk_component_root.firstElementChild.getAttribute(__target__)) document.getElementById(__WIDGET__.pkg_config.pkg).setAttribute(__target__, __params__)
     else console.error ('Gavato Core Error -> __target__ <' + __target__ + '> was not found in the given __WIDGET__ <' + __WIDGET__ + '>, Ignoring __params__ <' + __params__ + '>');
 }
 function gavato_widget_get_param (__target__, __WIDGET__){
     let __params__;
-    if (document.getElementById(__WIDGET__.pkg_config.pkg) && document.getElementById(__WIDGET__.pkg_config.pkg).getAttribute(__target__)) __params__ =  document.getElementById(__WIDGET__.pkg_config.pkg).getAttribute(__target__);
+    if (document.getElementById(__WIDGET__.pkg_config.pkg) && __WIDGET__.ghlwtk.hlwtk_component_root.firstElementChild.getAttribute(__target__)) __params__ =  document.getElementById(__WIDGET__.pkg_config.pkg).getAttribute(__target__);
     else console.error ('Gavato Core Error -> __target__ <' + __target__ + '> was not found in the given __WIDGET__ <' + __WIDGET__ + '>, Ignoring __params__ <' + __params__ + '>'), __params__ = 'Gavato Core Error -> __target__ <' + __target__ + '> was not found in the given __WIDGET__ <' + __WIDGET__ + '>, Ignoring __params__ <' + __params__ + '>';
     return __params__;
 }
 function gavato_widget_make_param (__target__, __params__,__WIDGET__){
-    if (document.getElementById(__WIDGET__.pkg_config.pkg)) document.getElementById(__WIDGET__.pkg_config.pkg).setAttribute(__target__, __params__);
+    if (document.getElementById(__WIDGET__.pkg_config.pkg)) __WIDGET__.ghlwtk.hlwtk_component_root.firstElementChild.setAttribute(__target__, __params__);
     else console.error ('Gavato Core Error -> __target__ <' + __target__ + '> was not found in the given __WIDGET__ <' + __WIDGET__ + '>, Ignoring __params__ <' + __params__ + '>');
 }
 function gavato_widget_has_param (__target__, __WIDGET__){
     let rval = 0;
     if (gavato_is_widget(__WIDGET__)){
-        if (document.getElementById(__WIDGET__.pkg_config.pkg).hasAttribute(__target__)) rval = 1;
+        if (__WIDGET__.ghlwtk.hlwtk_component_root.firstElementChild.hasAttribute(__target__)) rval = 1;
     }
     return rval;
 }
 function gavato_widget_update_param (__target__, __params__, __WIDGET__){
     if (!gavato_widget_has_param(__target__, __WIDGET__)) gavato_widget_make_param (__target__, __params__, __WIDGET__);
-    else gavato_widget_set_param (__target__, (gavato_widget_get_param(__target__, __WIDGET__) + __params__), __WIDGET__);
+    else gavato_widget_set_param (__target__, (gavato_widget_get_param(__target__, __WIDGET__) + " " + __params__), __WIDGET__);
 }
 
 
@@ -162,6 +162,17 @@ function gavato_widget_add_effect (__target__, __WIDGET__, __params__){
         }
         else if (__target__ == 'scale'){
             gavato_widget_update_param ('style', `transform: scale(${__params__});`, __WIDGET__);
+        }
+        else if (__target__ == 'glass'){
+            let widget = gavato_widget_get_param ('class', __WIDGET__);
+            let pkg = widget.substring(0, widget.indexOf("-"));
+            // console.log (pkg);
+            gavato_widget_set_param ('class', `${pkg}-primary`, __WIDGET__);
+            gavato_widget_update_param ('style', `
+                background: rgba(${__params__}, 0.4);
+                border: 1px solid rgba(${__params__}, 0.4);
+                backdrop-filter: blur(5px);
+            `, __WIDGET__);
         }
         else if (__target__ == 'top_center'){
             let top_positon = (screen.height/2);
@@ -255,3 +266,31 @@ function gavato_widget_link (__WIDGET__, ___WIDGET___){
 }
 
 // Update 4 ended by ghgltggamer on 6:06PM 3/10/25
+
+// Update 5 by ghgltggamer on 5:10 3/14/35
+let gavato_current_theme_type = 'light';
+let gavato_theme_source = '/src/themes/';
+function gavato_theme_change (theme_name='gavato'){
+    if (gavato_current_theme_type === 'light') 
+        gavato_current_theme_type = 'dark',
+        document.getElementById('gavato-application-theme-link').href = `${gavato_theme_source}/${theme_name}-${gavato_current_theme_type}.css`;
+    else if (gavato_current_theme_type === 'dark') 
+        gavato_current_theme_type = 'light',
+        document.getElementById('gavato-application-theme-link').href = `${gavato_theme_source}/${theme_name}-${gavato_current_theme_type}.css`
+    else console.error ("Gavato Core Error -> Theme not found named as, <" + theme_name + "> on path, <" + gavato_theme_source + ">. Make sure that theme exists!");
+}
+
+
+// function gavato_theme_change_style (theme_name, style){
+//     gwidget_default_style = style;
+//     for (let i = 0;i < gwidget_capture_widgets.length;i++){
+//         let widget = gwidget_capture_widgets[i];
+//         if (gavato_widget_has_param('class', widget)){
+//             console.log (gavato_widget_get_param('class', widget));
+//         }
+//         console.log (widget, i);
+//     }
+// }
+
+
+// Update 5 ended by ghgltggamer at 4:51 on 4/4/25
